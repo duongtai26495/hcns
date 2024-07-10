@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root
+{
+    --sidebar-maxwidth: 250px;
+    --sidebar-width:80px;
+    --footer-height: 40px;
+}
+
+.main-color 
+{ 
+    color: rgb(0,9,91) !important;
+}
+.sidebar-expand
+{
+    max-width: var( --sidebar-maxwidth);
+    width: var( --sidebar-maxwidth);
+}
+
+.dashboard-expand
+{
+    flex: 1;
+    margin-left: var(--sidebar-maxwidth);
+}
+
+.sidebar
+{
+    width: var( --sidebar-width);
+}
+
+
+footer
+{
+    height: var(--footer-height);
+    padding-left:calc(var(--sidebar-width) + 1rem);
+}
+main {
+    height: calc(97vh - var(--footer-height));
+}
+
+@media (min-width:1024px){
+    .dashboard
+{
+    flex: 1;
+    margin-left: var(--sidebar-width);
+}
+
+    .sidebar:hover
+    {
+    max-width: var( --sidebar-maxwidth);
+    width: var( --sidebar-maxwidth);
+    }
+}
