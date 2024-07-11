@@ -20,7 +20,8 @@ class AdminUserSeeder extends Seeder
             'password' => Hash::make('OneFord@2024'),
             'role_id' => 5,
             'department_id'=> 8,
-            'gender_id'=>2
+            'gender_id'=>2,
+            'ma_nhan_vien'=>'BITF00001'
         ]);
 
     }
