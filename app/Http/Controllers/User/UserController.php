@@ -26,6 +26,7 @@ class UserController extends Controller
     public function dashboard()
     {
     $role = Auth::user()->role;
+    $user = Auth::user();
     $users = NULL;
     
         if($role -> name === 'root' || $role -> name === 'admin' || $role -> name === 'moderator')
@@ -33,12 +34,14 @@ class UserController extends Controller
             $users = User::paginate(10);
             return view('pages.dashboard',[
                 'title' => 'Admin Dashboard',
-                'users' => $users
+                'users' => $users,
+                'user'=>$user
             ]);
         }
         return view('pages.dashboard',[
             'title' => 'Dashboard',
-            'users' => $users
+            'users' => $users,
+            'user'=>$user
         ]);
     }
 
@@ -51,8 +54,9 @@ class UserController extends Controller
             return redirect()->intended('/dashboard'); // Điều hướng đến trang quản trị
         }
 
-        // Xác thực không thành công
-        return redirect('/')->with('error', 'Invalid credentials');
+        return back()->withErrors([
+            'email' => 'Email hoặc mật khẩu không chính xác. Mời thử lại !',
+        ]);
     }
     public function logout(Request $request)
     {

@@ -8,7 +8,11 @@
     --sidebar-width:80px;
     --footer-height: 40px;
 }
-
+button[disabled]
+{
+    opacity: .5;
+    pointer-events: none;
+}
 .main-color 
 { 
     color: rgb(0,9,91) !important;
@@ -39,7 +43,29 @@ footer
 main {
     height: calc(97vh - var(--footer-height));
 }
-
+.switch-bg
+{
+    transition-duration: 500ms;
+    background-color: rgb(230,230,230);
+}
+.remember-switch.enabled
+{
+    background-color: rgb(255, 95, 46);
+}
+.switch-btn
+{
+    transition-duration: 500ms;
+    
+    top: -3px;
+    left: -3px;
+    background-color: rgb(148, 148, 148);
+}
+.remember-switch.enabled .switch-btn
+{
+    right: -3px;
+    left: unset;
+    background-color: white;
+}
 @media (min-width:1024px){
     .dashboard
 {

@@ -7,5 +7,6 @@
 <body>
 @yield('content')
 
+@include('includes.scripts-body')
 </body>
 </html>

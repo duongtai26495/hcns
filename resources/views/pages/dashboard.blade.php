@@ -35,8 +35,8 @@
                             <td class="border px-4 py-2">{{ $user->email_canhan }}</td>
                             <td class="border px-4 py-2">{{ $user->mobile_number }}</td>
                             <td class="border px-4 py-2 flex gap-2">
-                                <button class="rounded bg-blue-600 p-2 text-white">Xem chi tiết</button>
-                                <button class="rounded bg-green-600 p-2 text-white">Cập nhật</button>
+                                <button class="load_ani rounded bg-blue-600 max-w-[100px] overflow-hidden whitespace-nowrap p-2 text-sm text-white">Xem chi tiết</button>
+                                <button class="rounded bg-green-600 p-2 text-sm max-w-[100px] overflow-hidden whitespace-nowrap text-white">Cập nhật</button>
                             </td>
                         </tr>
                         @endforeach

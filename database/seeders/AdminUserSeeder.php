@@ -21,7 +21,8 @@ class AdminUserSeeder extends Seeder
             'role_id' => 5,
             'department_id'=> 8,
             'gender_id'=>2,
-            'ma_nhan_vien'=>'BITF00001'
+            'ma_nhan_vien'=>'BITF00001',
+            'position_id'=>1
         ]);
 
     }
