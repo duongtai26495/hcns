@@ -1,15 +1,6 @@
 @extends('layouts.authen')
 
 @section('content')
-<style>
-    @media (min-width: 767px) {
-        .bg-image {
-            background-image: url('https://plus.unsplash.com/premium_photo-1683910767532-3a25b821f7ae?q=80&w=2608&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
-            background-size: cover;
-            background-position: center;
-        }
-    }
-</style>
 
 <div class="flex flex-col md:flex-row w-full h-full bg-zinc-100 overflow-hidden">
 
@@ -17,7 +8,7 @@
 
         <div class="max-w-md w-full h-full flex flex-col mx-auto px-5 py-3 justify-between">
             <img class="object-contain mx-auto" height="80" width="160" src="{{ 'img/BthF.png' }}" />
-
+          
             <div class="w-full">
                 <div class="w-full text-center mb-5">
                 <h3 class="text-3xl font-bold w-fit mx-auto my-3 main-color">Chào mừng trở lại !</h3>
@@ -38,8 +29,8 @@
                         <input placeholder="Mật khẩu đăng nhập" type="password" id="password" name="password" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
                     </div>
                     <div class="flex gap-3 my-3 items-center justify-start">
-                        <div class="w-12 border h-5 rounded-full switch-bg remember-switch enabled relative cursor-pointer duration-500 transition-all">
-                            <div class="switch-btn rounded-full h-6 w-6 border duration-500 absolute transition-all"></div>
+                        <div class="border h-5 rounded-full switch-bg remember-switch enabled relative cursor-pointer">
+                            <div class="switch-btn rounded-full h-6 w-6 border absolute"></div>
                         </div>
                         <span>Ghi nhớ tài khoản</span>
                     </div>
@@ -63,7 +54,49 @@
         </div>
     </div>
 
-    <div class="md:w-1/2 xl:w-1/4 3xl:w-1/5 md:block hidden bg-cover bg-center bg-image"></div>
+    <div class="md:w-1/2 xl:w-1/4 3xl:w-1/5 md:flex flex-col relative gap-3 hidden bg-cover bg-center henry_ford">
+            <div class="ford_quote absolute bottom-0 left-0 z-[1]">
+                <div class="ford_quote-content font-normal">
+                </div>
+                <h4 class="text-2xl w-fit font-bold">- Henry Ford -</h4>
+            </div>
+                <div class="absolute bottom-0 left-0 bg-overlay z-[0] w-full h-1/2"></div>
+    </div>
+
+    <script>
+        
+
+const images = [
+        "{{ asset('img/henry_ford_1.jpg') }}",
+        "{{ asset('img/henry_ford_2.jpg') }}"
+];
+// Danh sách các câu quote
+const quotes = [
+    "The basically simple things are best, whether it's automobiles or diets or philosophy.",
+    "The only true test of values, either of men or of things, is that of their ability to make the world a better place in which to live.",
+    "The short successes that can be gained in a brief time and without difficulty, are not worth much.",
+    "Education is preeminently a matter of quality, not amount",
+    "Any man can learn anything he will, but no man can teach except to those who want to learn.",
+    "Two classes of people lose money; those who are too weak to guard what they have; those who win money by trick. They both lose in the end.",
+    "The most closely organized groups and movements in the world are those which have been the least friendly to the people's progress and liberty.",
+    "Be ready to revise any system, scrap any method, abandon any theory, if the success of the job requires it.",
+];
+
+// Hàm chọn ngẫu nhiên
+function getRandomItem(arr) {
+    const randomIndex = Math.floor(Math.random() * arr.length);
+    return arr[randomIndex];
+}
+
+// Chọn ngẫu nhiên ảnh và câu quote
+const randomImage = getRandomItem(images);
+const randomQuote = getRandomItem(quotes);
+
+// Đặt ảnh nền và câu quote
+document.querySelector('.henry_ford').style.backgroundImage = `url(${randomImage})`;
+document.querySelector('.ford_quote-content').innerText = randomQuote;
+
+    </script>
     
 </div>
 @endsection

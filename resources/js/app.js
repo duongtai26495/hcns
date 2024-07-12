@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     const form = document.getElementById('createUserForm');
-
+    if(form)
     form.addEventListener('input', function(event) {
         const input = event.target;
         if (input.tagName === 'INPUT' || input.tagName === 'SELECT') {
@@ -146,4 +146,6 @@ document.addEventListener('DOMContentLoaded', function() {
             submitButton.classList.add('bg-gray-400', 'cursor-not-allowed');
         }
     }
+
+
 });

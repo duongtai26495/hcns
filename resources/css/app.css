@@ -2,11 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
+.henry_ford {
+    justify-content: end;
+    align-items: start;
+    text-align: start;
+    color: white;
+    background-size: cover;
+    background-position: right;
+} 
+.bg-overlay
+{
+    background-image: linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,1));
+}
+.ford_quote {
+    font-size: 24px;
+    font-weight: bold;
+    padding: 3rem;
+}
 :root
 {
     --sidebar-maxwidth: 250px;
     --sidebar-width:80px;
     --footer-height: 40px;
+    --switch-size:3rem;
 }
 button[disabled]
 {
@@ -43,8 +61,9 @@ footer
 main {
     height: calc(97vh - var(--footer-height));
 }
-.switch-bg
+.remember-switch
 {
+    width: var(--switch-size);
     transition-duration: 500ms;
     background-color: rgb(230,230,230);
 }
@@ -54,16 +73,14 @@ main {
 }
 .switch-btn
 {
-    transition-duration: 500ms;
-    
+    transform: translateX(var(--switch-size));
     top: -3px;
     left: -3px;
     background-color: rgb(148, 148, 148);
 }
 .remember-switch.enabled .switch-btn
 {
-    right: -3px;
-    left: unset;
+    transform: translateX(var(--switch-size));
     background-color: white;
 }
 @media (min-width:1024px){
