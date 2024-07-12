@@ -12,7 +12,7 @@
     </div>
     <div class="w-full dashboard block overflow-auto">
         @include('includes.header')
-        <div class="flex-1 h-full p-10">
+        <div class="flex-1 h-full p-5">
             @yield('content')
         </div>
         @include('includes.footer')

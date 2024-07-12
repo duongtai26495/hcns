@@ -27,4 +27,8 @@ Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard'
 Route::group(['middleware' => 'role:admin,root'], function () {
     Route::get('/user/create', [AdminController::class, 'createUser'])->name('create-user');
     Route::post('/user/store', [AdminController::class, 'store'])->name('user.store');
+    Route::get('/user/list', [AdminController::class, 'employees'])->name('user.list');
+    Route::get('/user/{id}', [AdminController::class, 'show'])->name('user.show');
+    Route::post('/user/update', [AdminController::class, 'update'])->name('user.update');
+
 });

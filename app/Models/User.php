@@ -21,7 +21,7 @@ class User extends Authenticatable
         'email_coquan_verified_at', 'phone_number', 'mobile_number', 'password', 
         'ma_nhan_vien', 'ngay_sinh', 'trang_thai', 'ngay_thu_viec', 'ngay_chinh_thuc', 
         'identification_number', 'ngay_cap', 'noi_cap', 'nganh_hoc', 'dia_chi', 
-        'que_quan', 'bien_so_xe', 'role_id', 'department_id', 'gender_id'
+        'que_quan', 'bien_so_xe', 'position_id', 'role_id', 'department_id', 'gender_id'
     ];
 
     /**
@@ -69,4 +69,5 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Gender::class);
     }
+
 }

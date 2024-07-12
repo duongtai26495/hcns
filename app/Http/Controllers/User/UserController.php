@@ -25,22 +25,11 @@ class UserController extends Controller
 
     public function dashboard()
     {
-    $role = Auth::user()->role;
-    $user = Auth::user();
-    $users = NULL;
+        $user = Auth::user();
+        $role =  $user->role;
     
-        if($role -> name === 'root' || $role -> name === 'admin' || $role -> name === 'moderator')
-        {
-            $users = User::paginate(10);
-            return view('pages.dashboard',[
-                'title' => 'Admin Dashboard',
-                'users' => $users,
-                'user'=>$user
-            ]);
-        }
         return view('pages.dashboard',[
             'title' => 'Dashboard',
-            'users' => $users,
             'user'=>$user
         ]);
     }

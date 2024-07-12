@@ -4,10 +4,10 @@
 
 <div class="flex flex-col md:flex-row w-full h-full bg-zinc-100 overflow-hidden">
 
-    <div class="w-full h-screen md:w-1/2  xl:w-3/4 3xl:w-4/5">
+    <div class="w-full h-screen md:w-1/2  xl:w-3/5">
 
         <div class="max-w-md w-full h-full flex flex-col mx-auto px-5 py-3 justify-between">
-            <img class="object-contain mx-auto" height="80" width="160" src="{{ 'img/BthF.png' }}" />
+            <img class="object-contain mx-auto mt-5" height="80" width="300" src="{{ 'img/LogoNgang.png' }}" />
           
             <div class="w-full">
                 <div class="w-full text-center mb-5">
@@ -29,8 +29,8 @@
                         <input placeholder="Mật khẩu đăng nhập" type="password" id="password" name="password" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
                     </div>
                     <div class="flex gap-3 my-3 items-center justify-start">
-                        <div class="border h-5 rounded-full switch-bg remember-switch enabled relative cursor-pointer">
-                            <div class="switch-btn rounded-full h-6 w-6 border absolute"></div>
+                        <div class="h-5 rounded-full switch-bg remember-switch enabled relative cursor-pointer">
+                            <div class="switch-btn rounded-full h-[15px] w-[15px] border absolute"></div>
                         </div>
                         <span>Ghi nhớ tài khoản</span>
                     </div>
@@ -48,13 +48,13 @@
             @endif
             
             </div>
-            <div class="w-full text-center">
+            <div class="w-full text-center mb-5">
                Duong Tai - 2024
          </div>
         </div>
     </div>
 
-    <div class="md:w-1/2 xl:w-1/4 3xl:w-1/5 md:flex flex-col relative gap-3 hidden bg-cover bg-center henry_ford">
+    <div class="md:w-1/2 xl:w-2/5 md:flex flex-col relative gap-3 hidden bg-cover bg-center henry_ford">
             <div class="ford_quote absolute bottom-0 left-0 z-[1]">
                 <div class="ford_quote-content font-normal">
                 </div>
@@ -67,8 +67,9 @@
         
 
 const images = [
-        "{{ asset('img/henry_ford_1.jpg') }}",
-        "{{ asset('img/henry_ford_2.jpg') }}"
+        "{{ asset('img/henry_ford_1.webp') }}",
+        "{{ asset('img/henry_ford_2.webp') }}",
+        "{{ asset('img/henry_ford_3.jpg') }}",
 ];
 // Danh sách các câu quote
 const quotes = [

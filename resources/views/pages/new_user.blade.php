@@ -1,10 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="max-w-lg mx-auto mt-5 p-6 bg-white shadow-md rounded-lg">
+<div class="max-w-3xl mt-5 p-2 lg:p-6 ">
+    <h3 class="mb-5 text-2xl font-bold">Thêm nhân viên</h3>
     <form id="createUserForm" action="{{ route('user.store')}}" method="POST">
         @csrf
-
+<div class="flex-col lg:flex-row flex w-full gap-0 lg:gap-5">
+        <div class="p-5 pt-0 border rounded-md shadow-md mb-3 w-full lg:w-1/2 ">
+            <h4 class="my-3 text-lg font-bold">Thông tin chung</h4>
         <!-- Họ và tên đầy đủ -->
         <div class="mb-4">
             <label for="full_name" class="block text-sm font-medium text-gray-700">Họ và tên đầy đủ</label>
@@ -14,7 +17,43 @@
             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
             @enderror
         </div>
+       <!-- Ngày sinh -->
+       <div class="mb-4">
+        <label for="ngay_sinh" class="block text-sm font-medium text-gray-700">Ngày sinh</label>
+        <input type="date" id="ngay_sinh" name="ngay_sinh"
+            class="mt-1 block w-full px-3 py-2 border @error('ngay_sinh') border-red-500 @else border-gray-300 @enderror rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm transition duration-300">
+        @error('ngay_sinh')
+        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+        @enderror
+    </div>
+ <!-- Số CMND/CCCD -->
+ <div class="mb-4">
+    <label for="identification_number" class="block text-sm font-medium text-gray-700">Số CMND/CCCD</label>
+    <input type="text" id="identification_number" name="identification_number"
+        placeholder="Số CMND/CCCD"
+        class="mt-1 block w-full px-3 py-2 border @error('identification_number') border-red-500 @else border-gray-300 @enderror rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm transition duration-300">
+    @error('identification_number')
+    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+    @enderror
+</div>
 
+        <!-- Dropdown Giới tính -->
+        <div class="mb-4">
+            <label for="gender_id" class="block text-sm font-medium text-gray-700">Giới tính</label>
+            <select id="gender_id" name="gender_id"
+                class="mt-1 block w-full px-3 py-2 border @error('gender_id') border-red-500 @else border-gray-300 @enderror rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm transition duration-300">
+                @foreach ($genders as $gender)
+                <option class="capitalize" value="{{ $gender->id }}">{{ $gender->value }}</option>
+                @endforeach
+            </select>
+            @error('gender_id')
+            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+            @enderror
+        </div>
+        </div>
+
+        <div class="p-5 pt-0 border rounded-md shadow-md mb-3 w-full lg:w-1/2 ">
+            <h4 class="my-3 text-lg font-bold">Phương thức liên lạc</h4>
         <!-- Email cá nhân -->
         <div class="mb-4">
             <label for="email_canhan" class="block text-sm font-medium text-gray-700">Email cá nhân</label>
@@ -34,7 +73,7 @@
             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
             @enderror
         </div>
-
+ 
         <!-- Số điện thoại di động -->
         <div class="mb-4">
             <label for="mobile_number" class="block text-sm font-medium text-gray-700">Số điện thoại di động</label>
@@ -44,8 +83,12 @@
             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
             @enderror
         </div>
+        </div>
+    </div>
 
-        <!-- Mã nhân viên -->
+    <div class="flex-col lg:flex-row flex w-full gap-0 lg:gap-5">
+        <div class="p-5 pt-0 border rounded-md shadow-md mb-3 w-full lg:w-1/2 ">
+            <h4 class="my-3 text-lg font-bold">Bảo mật</h4>
         <div class="mb-4">
             <label for="ma_nhan_vien" class="block text-sm font-medium text-gray-700">Mã nhân viên</label>
             <input type="text" id="ma_nhan_vien" name="ma_nhan_vien" placeholder="Mã nhân viên"
@@ -64,17 +107,11 @@
             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
             @enderror
         </div>
-
-        <!-- Ngày sinh -->
-        <div class="mb-4">
-            <label for="ngay_sinh" class="block text-sm font-medium text-gray-700">Ngày sinh</label>
-            <input type="date" id="ngay_sinh" name="ngay_sinh"
-                class="mt-1 block w-full px-3 py-2 border @error('ngay_sinh') border-red-500 @else border-gray-300 @enderror rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm transition duration-300">
-            @error('ngay_sinh')
-            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-            @enderror
         </div>
+       
 
+        <div class="p-5 pt-0 border rounded-md shadow-md mb-3 w-full lg:w-1/2 ">
+            <h4 class="my-3 text-lg font-bold">Thông tin công việc</h4>
         <!-- Ngày thử việc -->
         <div class="mb-4">
             <label for="ngay_thu_viec" class="block text-sm font-medium text-gray-700">Ngày thử việc</label>
@@ -85,17 +122,7 @@
             @enderror
         </div>
 
-        <!-- Số CMND/CCCD -->
-        <div class="mb-4">
-            <label for="identification_number" class="block text-sm font-medium text-gray-700">Số CMND/CCCD</label>
-            <input type="text" id="identification_number" name="identification_number"
-                placeholder="Số CMND/CCCD"
-                class="mt-1 block w-full px-3 py-2 border @error('identification_number') border-red-500 @else border-gray-300 @enderror rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm transition duration-300">
-            @error('identification_number')
-            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-            @enderror
-        </div>
-
+       
         <!-- Dropdown Vai trò -->
         <div class="mb-4">
             <label for="role_id" class="block text-sm font-medium text-gray-700">Vai trò</label>
@@ -126,20 +153,20 @@
             @enderror
         </div>
 
-        <!-- Dropdown Giới tính -->
         <div class="mb-4">
-            <label for="gender_id" class="block text-sm font-medium text-gray-700">Giới tính</label>
-            <select id="gender_id" name="gender_id"
-                class="mt-1 block w-full px-3 py-2 border @error('gender_id') border-red-500 @else border-gray-300 @enderror rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm transition duration-300">
-                @foreach ($genders as $gender)
-                <option class="capitalize" value="{{ $gender->id }}">{{ $gender->value }}</option>
+            <label for="position_id" class="block text-sm font-medium text-gray-700">Vị trí công việc</label>
+            <select id="position_id" name="position_id"
+                class="mt-1 block w-full px-3 py-2 border @error('position_id') border-red-500 @else border-gray-300 @enderror rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm transition duration-300">
+                @foreach ($positions as $pos)
+                <option class="capitalize" value="{{ $pos->id }}">{{ $pos->name }}</option>
                 @endforeach
             </select>
-            @error('gender_id')
+            @error('position_id')
             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
             @enderror
         </div>
-
+        </div>
+    </div>
         <!-- Nút submit -->
         <div class="mb-4">
             <button type="submit"
@@ -147,6 +174,7 @@
                 Tạo người dùng
             </button>
         </div>
+    
     </form>
 </div>
 
