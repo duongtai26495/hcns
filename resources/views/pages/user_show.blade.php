@@ -291,7 +291,7 @@
             </div>
         </div>
         <div class="flex items-center justify-end mt-4 gap-5">
-            <a href="{{ route('dashboard') }}" class="bg-orange-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            <a href="{{ route('user.list') }}" class="bg-orange-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                 Quay lại
             </a>
             <button type="submit" class="px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white font-bold rounded-md">Cập nhật</button>

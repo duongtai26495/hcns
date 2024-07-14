@@ -169,7 +169,10 @@ main {
 }
 }
 
-
+.side-taskbar span
+{
+    font-size: 10px;
+}
 
 .box-shawdow-effect
 {
@@ -182,6 +185,18 @@ main {
 .box-effect-taskbar
 {
 background: #fafafa;
-box-shadow:  10px 10px 20px #ebebeb,
-             -10px -10px 20px #ffffff;
+box-shadow:  10px 10px 10px #ebebeb,
+             -10px -10px 10px #ffffff;
+}
+
+.active
+{
+    background-color: #00095B;
+    color: white;
+    border-radius: 5px;
+}
+
+.active svg *
+{
+    stroke: white;
 }

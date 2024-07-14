@@ -26,6 +26,7 @@ class AdminController extends Controller
         if ($role->name === 'root' || $role->name === 'admin') {
             return view('pages.new_user', [
                 'title' => 'Tạo nhân viên mới',
+                'heading'=> 'Tạo nhân viên mới',
                 'roles' => $roles,
                 'departments' => $departments,
                 'user' => $user,

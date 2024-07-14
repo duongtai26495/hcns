@@ -4,6 +4,6 @@
 <style>
     .right-content-banner
     {
-        background-image: url({{ '/img/Standee_2.png' }})
+        background-image: url({{ '/img/RightBanner.png' }})
     }
 </style>

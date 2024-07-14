@@ -15,25 +15,28 @@
                 <table class="table-auto w-full border-collapse border border-gray-200">
                     <thead>
                         <tr class="bg-gray-100">
-                            <th class="px-4 py-2">STT</th>
-                            <th class="px-4 py-2">Mã nhân viên</th>
-                            <th class="px-4 py-2">Họ và Tên</th>
-                            <th class="px-4 py-2">Email cơ quan</th>
-                            <th class="px-4 py-2">Số điện thoại</th>                           
-                            <th class="px-4 py-2">Thao tác</th>
+                            <th class="px-2 py-2">STT</th>
+                            <th class="px-2 py-2">Mã nhân viên</th>
+                            <th class="px-2 py-2">Họ và Tên</th>
+                            <th class="px-2 py-2">Bộ phận</th>
+                            <th class="px-2 py-2">Vị trí công tác</th>                            
+                            <th class="px-2 py-2">Quyền hạn</th>                            
+                            <th class="px-2 py-2">Giới tính</th>     
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($users as $index => $user)
                         <tr class="{{ $index % 2 === 0 ? 'bg-gray-50' : 'bg-white' }}">
-                            <td class="border px-4 py-2">{{ $index + 1 }}</td>
-                            <td class="border px-4 py-2">{{ $user->ma_nhan_vien }}</td>
-                            <td class="border px-4 py-2">{{ $user->full_name }}</td>
-                            <td class="border px-4 py-2">{{ $user->email_coquan }}</td>
-                            <td class="border px-4 py-2">{{ $user->mobile_number }}</td>
-                            <td class="border px-4 py-2 flex gap-2">
-                                <a href="{{ route('user.show', $user->id) }}" class="load_ani rounded bg-blue-600 w-fit mx-auto overflow-hidden whitespace-nowrap p-2 text-sm text-white">Xem chi tiết</a>
-                            </td>
+                            <td class="border px-2 py-2">{{ $index + 1 }}</td>
+                            <td class="border px-2 py-2">
+                                <a href="{{ route('user.show', $user->id) }}">
+                                {{ $user->ma_nhan_vien }}
+                                </a></td>
+                            <td class="border px-2 py-2">{{ $user->full_name }}</td>
+                            <td class="border px-2 py-2">{{ $user->department_id }}</td>
+                            <td class="border px-2 py-2">{{ $user->position_id }}</td>
+                            <td class="border px-2 py-2">{{ $user->role_id }}</td>
+                            <td class="border px-2 py-2">{{ $user->gender_id }}</td>
                         </tr>
                         @endforeach
                     </tbody>

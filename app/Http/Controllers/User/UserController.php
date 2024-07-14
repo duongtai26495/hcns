@@ -58,4 +58,62 @@ class UserController extends Controller
         return redirect('/'); // Chuyển hướng về trang chủ hoặc trang bạn muốn sau khi đăng xuất
     }
 
+    public function xem_nghi_phep()
+    {
+        
+        $user = Auth::user();
+        return view('pages.list-nghi-phep',[
+            'title'=>'Danh sách đơn nghỉ phép',
+            'heading'=> 'Danh sách đơn nghỉ phép',
+            'user'=>$user
+        ]);
+    }
+
+    public function them_nghi_phep()
+    {
+        $user = Auth::user();
+        return view('pages.them-nghi-phep',[
+            'title'=>'Tạo đơn nghỉ phép',
+            'heading'=> 'Tạo mới đơn nghỉ phép',
+            'user'=>$user
+        ]);
+    }
+    public function xem_don_nghi_phep()
+    {
+        $user = Auth::user();
+        return view('pages.don-nghi-phep',[
+            'title'=>'Xem đơn nghỉ phép',
+            'heading'=> 'Chi tiết đơn nghỉ phép',
+            'user'=>$user
+        ]);
+    }
+    public function cai_dat()
+    {
+        $user = Auth::user();
+        return view('pages.cai-dat',[
+            'title'=>'Thiết lập',
+            'heading'=> 'Thiết lập',
+            'user'=>$user
+        ]);
+    }
+
+    public function tintuc()
+    {
+        $user = Auth::user();
+        return view('pages.tintuc',[
+            'title'=>'Tin tức nội bộ',
+            'heading'=> 'Tin tức nội bộ',
+            'user'=>$user
+        ]);
+    }
+
+    public function bangluong()
+    {
+        $user = Auth::user();
+        return view('pages.bang-luong',[
+            'title'=>'Bảng lương nhân viên',
+            'heading'=> 'Bảng lương nhân viên',
+            'user'=>$user
+        ]);
+    }
 }

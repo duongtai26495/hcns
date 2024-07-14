@@ -2,8 +2,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
-<link rel="icon" type="image/png" href="/template/images/icons/favicon.png"/>
 @vite('resources/css/app.css')
+<link rel="shortcut icon" type="image/png" href="{{ mix('resouces/img/favicon.ico')}}"/>
 <script src="{{ mix('resources/js/jquery-3.7.1.min.js')}}"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>

@@ -9,7 +9,7 @@ use App\Http\Controllers\Admin\AdminController;
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
+| routes are loaded by the RouteServiceProvider and all of them will.
 | be assigned to the "web" middleware group. Make something great!
 |
 */
@@ -22,6 +22,19 @@ Route::post('/login', [UserController::class, 'login'])->name('login');
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
 Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
+
+Route::get('/nghi-phep',[UserController::class, 'xem_nghi_phep'])->name('user.nghi-phep');
+
+Route::get('/nghi-phep/{id}',[UserController::class, 'xem_don_nghi_phep'])->name('user.xem-don-nghi');
+
+Route::get('/nghi-phep/them',[UserController::class, 'them_nghi_phep'])->name('user.them-nghi-phep');
+
+Route::get('/cai-dat',[UserController::class, 'cai_dat'])->name('cai-dat');
+
+Route::get('/tin-tuc',[UserController::Class, 'tintuc'])->name('tin-tuc');
+
+Route::get('/bang-luong',[UserController::Class, 'bangluong'])->name('bang-luong');
+
 
 
 Route::group(['middleware' => 'role:admin,root'], function () {

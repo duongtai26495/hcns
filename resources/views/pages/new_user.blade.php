@@ -1,8 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="max-w-3xl mx-auto mt-5 p-2 lg:p-6 ">
-    <h3 class="mb-5 text-2xl font-bold">Thêm nhân viên</h3>
+
+@include('includes.top-view')
+<div class="max-w-3xl p-2 lg:p-6 ">
     <form id="createUserForm" action="{{ route('user.store')}}" method="POST">
         @csrf
 <div class="flex-col lg:flex-row flex w-full gap-0 lg:gap-5">
@@ -168,7 +169,10 @@
         </div>
     </div>
         <!-- Nút submit -->
-        <div class="mb-4">
+        <div class="flex items-center justify-end mt-4 gap-5">
+            <a href="{{ route('user.list') }}" class="bg-orange-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Quay lại
+            </a>
             <button type="submit"
                 class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                 Tạo người dùng
