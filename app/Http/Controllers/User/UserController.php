@@ -30,7 +30,7 @@ class UserController extends Controller
         $heading = 'Trang chủ';
     
         return view('pages.dashboard',[
-            'title' => 'Dashboard',
+            'title' => 'Bình Thuận Ford - Trang Chủ',
             'user'=>$user,
             'heading'=>$heading
         ]);

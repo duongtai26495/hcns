@@ -70,4 +70,8 @@ class User extends Authenticatable
         return $this->belongsTo(Gender::class);
     }
 
+    public function position()
+    {
+        return $this->belongsTo(Position::class);
+    }
 }
