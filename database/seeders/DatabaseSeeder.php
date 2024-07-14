@@ -72,6 +72,8 @@ class DatabaseSeeder extends Seeder
                 ['name' => 'Tư vấn bán hàng'],
                 ['name' => 'Tổng giám đốc'],
                 ['name' => 'Điều phối'],
+                ['name' => 'Thử việc'],
+                ['name' => 'Thực tập'],
             ];
     
             DB::table('positions')->insert($positions);

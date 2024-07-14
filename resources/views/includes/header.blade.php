@@ -1,8 +1,8 @@
 
-<header class="block">
+<header class="block md:hidden fixed top-0 z-[1] w-full header">
     <nav class="w-full bg-neutral-300 flex items-center justify-between px-5">
         <ul class="flex flex-row gap-10 w-fit">
-            <li><span class="cursor-pointer block py-3">Menu</span></li>
+            <li><span class="menu-icon cursor-pointer block py-3">Menu</span></li>
             <li><a class="block py-3" href="{{ route('dashboard') }}">Trang chủ</a></li>
         </ul>
         <div>

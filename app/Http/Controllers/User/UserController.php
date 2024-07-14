@@ -27,10 +27,12 @@ class UserController extends Controller
     {
         $user = Auth::user();
         $role =  $user->role;
+        $heading = 'Trang chủ';
     
         return view('pages.dashboard',[
             'title' => 'Dashboard',
-            'user'=>$user
+            'user'=>$user,
+            'heading'=>$heading
         ]);
     }
 

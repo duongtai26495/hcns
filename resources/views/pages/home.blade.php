@@ -6,10 +6,10 @@
 
     <div class="w-full h-screen md:w-1/2  xl:w-3/5">
 
-        <div class="max-w-md w-full h-full flex flex-col mx-auto px-5 py-3 justify-between">
+        <div class="max-w-md w-full h-full flex flex-col mx-auto px-5 py-3 justify-between ">
             <img class="object-contain mx-auto mt-5" height="80" width="300" src="{{ 'img/LogoNgang.png' }}" />
           
-            <div class="w-full">
+            <div class="w-full box-shawdow-effect p-8">
                 <div class="w-full text-center mb-5">
                 <h3 class="text-3xl font-bold w-fit mx-auto my-3 main-color">Chào mừng trở lại !</h3>
                 <h2 class="text-xl mt-3 mb-4 w-fit mx-auto main-color">Đăng nhập bằng Mã nhân viên và Mật khẩu để tiếp tục</h2>

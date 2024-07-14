@@ -22,12 +22,12 @@ return new class extends Migration
             $table->string('mobile_number', 30)->nullable()->default('');
             $table->string('password',200);
             $table->string('ma_nhan_vien', 100)->nullable()->default('');
-            $table->timestamp('ngay_sinh')->nullable()->default('2017-01-01 00:00:00');
+            $table->date('ngay_sinh')->nullable()->default('2000-01-01');
             $table->boolean('trang_thai',2)->nullable()->default(false);    
-            $table->timestamp('ngay_thu_viec')->nullable()->default('2017-01-01 00:00:00');
-            $table->timestamp('ngay_chinh_thuc')->nullable()->default('2017-01-01 00:00:00');
+            $table->date('ngay_thu_viec')->nullable()->default('2000-01-01');
+            $table->date('ngay_chinh_thuc')->nullable()->default('2000-01-01');
             $table->string('identification_number', 100)->nullable()->default('000000000');
-            $table->timestamp('ngay_cap')->nullable()->default('2017-01-01 00:00:00');
+            $table->date('ngay_cap')->nullable()->default('2000-01-01');
             $table->string('noi_cap', 100)->nullable()->default('');
             $table->string('nganh_hoc', 100)->default('');
             $table->string('dia_chi', 200)->default('');

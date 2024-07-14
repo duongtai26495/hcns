@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="max-w-3xl mt-5 p-2 lg:p-6 ">
+<div class="max-w-3xl mx-auto mt-5 p-2 lg:p-6 ">
     <h3 class="mb-5 text-2xl font-bold">Thêm nhân viên</h3>
     <form id="createUserForm" action="{{ route('user.store')}}" method="POST">
         @csrf

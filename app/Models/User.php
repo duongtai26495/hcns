@@ -40,10 +40,10 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_coquan_verified_at' => 'datetime',
-        'ngay_sinh' => 'datetime',
-        'ngay_thu_viec' => 'datetime',
-        'ngay_chinh_thuc' => 'datetime',
-        'ngay_cap' => 'datetime',
+        'ngay_sinh' => 'date',
+        'ngay_thu_viec' => 'date',
+        'ngay_chinh_thuc' => 'date',
+        'ngay_cap' => 'date',
     ];
 
     /**

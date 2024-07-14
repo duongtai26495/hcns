@@ -11,7 +11,7 @@ use App\Models\Department;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Gender;
 use App\Models\Position;
-
+use Carbon\Carbon;
 class AdminController extends Controller
 {
     public function createUser()
@@ -79,6 +79,7 @@ class AdminController extends Controller
         $user = Auth::user();
         $role =  $user->role;
         $users = NULL;
+        $heading = 'Danh sách nhân viên';
         
             if($role -> name === 'root' || $role -> name === 'admin' || $role -> name === 'moderator')
             {
@@ -86,12 +87,12 @@ class AdminController extends Controller
                 return view('pages.employees',[
                     'title' => 'Danh sách nhân viên',
                     'users' => $users,
-                    'user'=>$user
+                    'user'=>$user,
+                    'heading'=>$heading
                 ]);
             }
             return view('pages.dashboard',[
                 'title' => 'Dashboard',
-                'users' => $users,
                 'user'=>$user
             ]);
     }
@@ -99,72 +100,77 @@ class AdminController extends Controller
     public function show($id)
     {
         $user = User::findOrFail($id);
-        $role = $user->role;
         $roles = Role::all();
         $departments = Department::all();
         $genders = Gender::all();
         $positions = Position::all();
         $title = $user->full_name . ' - Cập nhật thông tin';
-        
-        return view('pages.user_show', compact('user', 'role', 'roles', 'departments', 'genders', 'positions', 'title'));
+        $heading = 'Thông tin nhân viên';
+        return view('pages.user_show', compact('user', 'roles', 'departments', 'genders', 'positions', 'title', 'heading'));
     }
     
 
 
     public function update(Request $request)
-    {
-        $request->validate([
-            'full_name' => 'required|string|max:255',
-            'email_canhan' => 'required|email|max:255',
-            'email_coquan' => 'required|email|max:255',
-            'mobile_number' => 'required|string|max:15',
-            'phone_number' => 'nullable|string|max:15',
-            'ngay_sinh' => 'required|date',
-            'ngay_thu_viec' => 'nullable|date',
-            'ngay_chinh_thuc' => 'nullable|date',
-            'identification_number' => 'required|string|max:20',
-            'ngay_cap' => 'nullable|date',
-            'noi_cap' => 'nullable|string|max:255',
-            'nganh_hoc' => 'nullable|string|max:255',
-            'dia_chi' => 'nullable|string|max:255',
-            'que_quan' => 'nullable|string|max:255',
-            'bien_so_xe' => 'nullable|string|max:20',
-            'role_id' => 'required|integer',
-            'department_id' => 'required|integer',
-            'gender_id' => 'required|integer',
-            'position_id' => 'required|integer',
-            'trang_thai' => 'required|boolean',
+{
+    $request->validate([
+        'full_name' => 'required|string|max:255',
+        'email_canhan' => 'required|email|max:255',
+        'email_coquan' => 'required|email|max:255',
+        'mobile_number' => 'required|string|max:15',
+        'phone_number' => 'nullable|string|max:15',
+        'ngay_sinh' => 'required|date_format:Y-m-d',
+        'ngay_thu_viec' => 'required|date_format:Y-m-d',
+        'ngay_chinh_thuc' => 'required|date_format:Y-m-d',
+        'identification_number' => 'required|string|max:20',
+        'ngay_cap' => 'required|date_format:Y-m-d',
+        'noi_cap' => 'nullable|string|max:255',
+        'nganh_hoc' => 'nullable|string|max:255',
+        'dia_chi' => 'nullable|string|max:255',
+        'que_quan' => 'nullable|string|max:255',
+        'bien_so_xe' => 'nullable|string|max:20',
+        'role_id' => 'required|integer',
+        'department_id' => 'required|integer',
+        'gender_id' => 'required|integer',
+        'position_id' => 'required|integer',
+        'trang_thai' => 'required|boolean',
+    ]);
+
+    $user = User::find($request->id);
+
+    if ($user) {
+        // Chuyển đổi định dạng ngày tháng và lưu vào cơ sở dữ liệu
+        $ngaySinh = Carbon::createFromFormat('Y-m-d', $request->ngay_sinh)->startOfDay();
+        $ngayThuViec = Carbon::createFromFormat('Y-m-d', $request->ngay_thu_viec)->startOfDay();
+        $ngayChinhThuc = Carbon::createFromFormat('Y-m-d', $request->ngay_chinh_thuc)->startOfDay();
+        $ngayCap = Carbon::createFromFormat('Y-m-d', $request->ngay_cap)->startOfDay();
+
+        $user->update([
+            'full_name' => $request->full_name,
+            'email_canhan' => $request->email_canhan,
+            'email_coquan' => $request->email_coquan,
+            'mobile_number' => $request->mobile_number,
+            'phone_number' => $request->phone_number,
+            'ngay_sinh' => $request->ngay_sinh,
+            'ngay_thu_viec' => $request->ngay_thu_viec,
+            'ngay_chinh_thuc' => $request->ngay_chinh_thuc,
+            'identification_number' => $request->identification_number,
+            'ngay_cap' => $request->ngay_cap,
+            'noi_cap' => $request->noi_cap,
+            'nganh_hoc' => $request->nganh_hoc,
+            'dia_chi' => $request->dia_chi,
+            'que_quan' => $request->que_quan,
+            'bien_so_xe' => $request->bien_so_xe,
+            'role_id' => $request->role_id,
+            'department_id' => $request->department_id,
+            'gender_id' => $request->gender_id,
+            'position_id' => $request->position_id,
+            'trang_thai' => $request->trang_thai,
         ]);
 
-        $user = User::find($request->id);
-
-        if ($user) {
-            $user->update([
-                'full_name' => $request->full_name,
-                'email_canhan' => $request->email_canhan,
-                'email_coquan' => $request->email_coquan,
-                'mobile_number' => $request->mobile_number,
-                'phone_number' => $request->phone_number,
-                'ngay_sinh' => $request->ngay_sinh,
-                'ngay_thu_viec' => $request->ngay_thu_viec,
-                'ngay_chinh_thuc' => $request->ngay_chinh_thuc,
-                'identification_number' => $request->identification_number,
-                'ngay_cap' => $request->ngay_cap,
-                'noi_cap' => $request->noi_cap,
-                'nganh_hoc' => $request->nganh_hoc,
-                'dia_chi' => $request->dia_chi,
-                'que_quan' => $request->que_quan,
-                'bien_so_xe' => $request->bien_so_xe,
-                'role_id' => $request->role_id,
-                'department_id' => $request->department_id,
-                'gender_id' => $request->gender_id,
-                'position_id' => $request->position_id,
-                'trang_thai' => $request->trang_thai,
-            ]);
-
-            return redirect()->back()->with('success', 'User updated successfully');
-        }
-
-        return redirect()->back()->with('error', 'User not found');
+        return redirect()->back()->with('success', 'User updated successfully');
     }
+
+    return redirect()->back()->with('error', 'Có lỗi xảy ra, vui lòng thử lại.');
+}
 }
